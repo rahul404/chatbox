@@ -1,0 +1,71 @@
+import java.io.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+class ChatPanel extends JPanel
+{
+	String name;
+	JButton back;
+	JTextArea history_TextArea;
+	JTextField send_TextField;
+	JButton send_Button;
+	MyClient client_Obj;
+	Main  main;
+	ChatPanel(String n,MyClient o,Main m)
+	{
+		main=m;
+		client_Obj=o;
+		name=n;
+		setSize(300,300);
+		initGUI();
+	}
+	void goBack()
+	{
+		main.cardLo.show(main,"FriendList");
+	}
+	void initGUI()
+	{
+		send_TextField=new JTextField();
+		history_TextArea=new JTextArea();
+		send_Button =new JButton("SEND");
+		back=new JButton("BACK");
+		back.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ae)
+			{
+				goBack();
+			}
+		});
+		send_Button.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ae)
+			{
+				doAction();
+			}
+		});
+		JPanel p=new JPanel();
+		p.setLayout(new BorderLayout());
+		p.add(send_Button,BorderLayout.EAST);
+		p.add(send_TextField);
+		setLayout(new BorderLayout());
+		add(p,BorderLayout.SOUTH);
+		JScrollPane jsp=new JScrollPane(history_TextArea);
+		add(jsp);
+	}
+	void doAction()
+	{
+		String msg=send_TextField.getText();
+		if(msg.length()==0)
+			return;
+		appendToHistory("ME:\n"+msg+"\n\n");
+		//TODO add the sender field here
+		client_Obj.send(name+":"+msg);
+	}
+	synchronized void appendToHistory(String msg)
+	{
+		history_TextArea.append(msg);
+	}
+}
+
+
+
