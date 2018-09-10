@@ -1,6 +1,6 @@
 <h1>Chatbox </h1>
 <p> A point-to-point desktop messaging app</p>
-<2>Working</h2>
+<h2>Working</h2>
 <p>
   Chatbox is a desktop P2P instant messaging application which makes use of Java Socket Programming.
   Chatbox first creates a server which performs the job of routing messages from sender to receiver client.
