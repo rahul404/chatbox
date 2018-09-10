@@ -3,6 +3,7 @@
 <h2>Motivation</h2>
 <p>
   The objective of implementing a point to point messaging application was to understand basics of Java Network Programming and implement the Computer Network Concepts in application. This application makes use of TCP/IP protocol using Java Socket programming. The demonstration was given by running the app on laptop geographically seperated.
+</p>
 <h2>Working</h2>
 <p>
   Chatbox is a desktop P2P instant messaging application which makes use of Java Socket Programming.
